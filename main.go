@@ -7,17 +7,30 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"os/exec"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
-const (
-	secret = "minha-chave-secreta" // Use a mesma chave secreta configurada no GitHub
-	repoPath = "/var/www/sitevila"
-)
+const repoPath = "/var/www/sitevila"
 
 func main() {
+	// Carregue as variáveis de ambiente do arquivo .env
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Erro ao carregar o arquivo .env")
+		return
+	}
+
+	// Obtenha a chave secreta do ambiente
+	secret := os.Getenv("WEBHOOK_SECRET")
+	if secret == "" {
+		fmt.Println("Chave secreta não configurada")
+		return
+	}
+
 	r := gin.Default()
 
 	r.POST("/webhook", func(c *gin.Context) {
@@ -25,7 +38,7 @@ func main() {
 		signature := c.GetHeader("X-Hub-Signature-256")
 		body, _ := ioutil.ReadAll(c.Request.Body)
 
-		if !verifySignature(signature, body) {
+		if !verifySignature(signature, body, secret) {
 			c.JSON(http.StatusForbidden, gin.H{"error": "Assinatura inválida"})
 			return
 		}
@@ -52,7 +65,7 @@ func main() {
 }
 
 // Função para verificar a assinatura do webhook
-func verifySignature(signature string, body []byte) bool {
+func verifySignature(signature string, body []byte, secret string) bool {
 	mac := hmac.New(sha256.New, []byte(secret))
 	mac.Write(body)
 	expectedSignature := "sha256=" + hex.EncodeToString(mac.Sum(nil))
