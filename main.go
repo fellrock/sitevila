@@ -61,7 +61,7 @@ func main() {
 		})
 	})
 
-	r.Run(":80")
+	r.Run(":8080")
 }
 
 // Função para verificar a assinatura do webhook
