@@ -94,12 +94,28 @@
             background-color: var(--pastel-green);
             color: var(--pastel-green-text);
         }
+
+        /* Animation for Sun and Moon */
+        .theme-icon {
+            display: inline-block;
+            transition: transform 0.5s, color 0.5s;
+        }
+
+        .theme-icon.sun {
+            transform: rotate(0deg);
+            color: #fcd34d; /* Yellow for Sun */
+        }
+
+        .theme-icon.moon {
+            transform: rotate(180deg);
+            color: #93c5fd; /* Blue for Moon */
+        }
     </style>
 </head>
 <body class="theme-light flex flex-col min-h-screen font-sans">
     <!-- Theme Toggle -->
     <button id="theme-toggle" class="absolute top-4 right-4 btn">
-        <span id="theme-icon">☀️</span>
+        <span id="theme-icon" class="theme-icon sun">☀️</span>
     </button>
 
     <!-- App Drawer -->
@@ -178,11 +194,15 @@
             }
         });
 
-        // Theme toggle
+        // Theme toggle with animation
         themeToggle.addEventListener('click', () => {
             const isDark = body.classList.contains('theme-dark');
             body.classList.toggle('theme-light', isDark);
             body.classList.toggle('theme-dark', !isDark);
+
+            // Update icon with animation
+            themeIcon.classList.toggle('sun', !isDark);
+            themeIcon.classList.toggle('moon', isDark);
             themeIcon.textContent = isDark ? '☀️' : '🌙';
         });
     </script>
