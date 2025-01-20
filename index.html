@@ -4,134 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão da Vila - Início</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #f7f7f7;
-        }
-
-        main {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #intro h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        #intro p {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-
-        .menu-buttons {
-            display: grid;
-            gap: 20px;
-        }
-
-        button {
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-5px);
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        button:active {
-            transform: translateY(0);
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (min-width: 769px) {
-            .menu-buttons {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                justify-content: center;
-                margin: 0 auto;
-                max-width: 800px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #intro h2 {
-                font-size: 2rem;
-            }
-
-            #intro p {
-                display: none;
-            }
-
-            .menu-buttons {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 0 10px;
-                justify-items: center;
-            }
-
-            button {
-                width: 70%;
-                padding: 30px;
-                font-size: 1.2rem;
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border-top: 1px solid #ccc;
-            margin-top: auto;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <main>
+<body class="flex flex-col min-h-screen bg-gray-100 font-sans">
+    <main class="flex-1 w-full max-w-5xl mx-auto p-6 flex flex-col items-center justify-center">
         <section id="intro">
-            <h2>Gestão da Vila</h2>
-            <p>Bem-vindo! Gerencie sua comunidade com facilidade usando nosso sistema. Selecione uma opção abaixo para começar:</p>
-            <div class="menu-buttons">
-                <button onclick="window.location.href='dashboard.html'">Painel Financeiro</button>
-                <button onclick="window.location.href='discussions.html'">Discussões</button>
-                <button onclick="window.location.href='voting.html'">Votações</button>
-                <button onclick="window.location.href='emergencies.html'">Emergências</button>
-                <button onclick="window.location.href='proposals.html'">Propostas</button>
-                <button onclick="window.location.href='meetings.html'">Reuniões</button>
-                <button onclick="window.location.href='services.html'">Serviços</button>
-                <button onclick="window.location.href='profile.html'">Perfil</button>
+            <h2 class="text-2xl font-bold text-center mb-6 md:text-3xl">Gestão da Vila</h2>
+            <p class="text-center text-gray-700 mb-10 hidden md:block">
+                Bem-vindo! Gerencie sua comunidade com facilidade usando nosso sistema. Selecione uma opção abaixo para começar:
+            </p>
+            <div class="grid gap-6 w-full md:grid-cols-3 md:max-w-4xl">
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='dashboard.html'">Painel Financeiro</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='discussions.html'">Discussões</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='voting.html'">Votações</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='emergencies.html'">Emergências</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='proposals.html'">Propostas</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='meetings.html'">Reuniões</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='services.html'">Serviços</button>
+                <button class="bg-white border border-gray-300 rounded-lg shadow p-4 text-lg font-semibold text-gray-700 hover:shadow-md transition" onclick="window.location.href='profile.html'">Perfil</button>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="text-center py-4 bg-gray-200 border-t border-gray-300">
         <p>&copy; 2025 Sistema de Gestão da Vila do Coco</p>
     </footer>
 </body>
