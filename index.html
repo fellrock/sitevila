@@ -43,7 +43,6 @@
 
         .menu-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
         }
 
@@ -70,7 +69,21 @@
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
 
+        @media (min-width: 769px) {
+            .menu-buttons {
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: center;
+                margin: 0 auto;
+                max-width: 800px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .menu-buttons {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+
             h1 {
                 font-size: 2rem;
             }
