@@ -1,90 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Management App</title>
+    <title>Gestão Comunitária - Início</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="scripts.js"></script>
 </head>
 <body>
     <header>
-        <h1>Community Management System</h1>
-        <nav>
-            <ul>
-                <li><a href="#dashboard">Financial Dashboard</a></li>
-                <li><a href="#discussions">Discussions</a></li>
-                <li><a href="#voting">Voting</a></li>
-                <li><a href="#emergencies">Emergencies</a></li>
-                <li><a href="#proposals">Proposals</a></li>
-                <li><a href="#meetings">Meetings</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#profile">Profile</a></li>
-            </ul>
-        </nav>
+        <h1>Bem-vindo ao Sistema de Gestão Comunitária</h1>
     </header>
 
     <main>
-        <!-- Financial Dashboard -->
-        <section id="dashboard">
-            <h2>Financial Dashboard</h2>
-            <div>
-                <p>Current Balance: <span id="current-balance">$0</span></p>
-                <p>Total Deposits by Residence:</p>
-                <ul id="deposits-list"></ul>
-                <p>Total Expenses: <span id="total-expenses">$0</span></p>
-                <p>Future Payment Projections: <span id="future-projections">$0</span></p>
+        <section id="intro">
+            <p>Bem-vindo! Gerencie sua comunidade com facilidade usando nosso sistema. Selecione uma opção abaixo para começar:</p>
+            <div class="menu-buttons">
+                <button onclick="window.location.href='dashboard.html'">Painel Financeiro</button>
+                <button onclick="window.location.href='discussions.html'">Discussões</button>
+                <button onclick="window.location.href='voting.html'">Votações</button>
+                <button onclick="window.location.href='emergencies.html'">Emergências</button>
+                <button onclick="window.location.href='proposals.html'">Propostas</button>
+                <button onclick="window.location.href='meetings.html'">Reuniões</button>
+                <button onclick="window.location.href='services.html'">Serviços</button>
+                <button onclick="window.location.href='profile.html'">Perfil</button>
             </div>
-        </section>
-
-        <!-- Discussions -->
-        <section id="discussions">
-            <h2>Discussion Board</h2>
-            <ul id="discussion-board"></ul>
-        </section>
-
-        <!-- Voting -->
-        <section id="voting">
-            <h2>Voting System</h2>
-            <ul id="votes-list"></ul>
-        </section>
-
-        <!-- Emergencies -->
-        <section id="emergencies">
-            <h2>Emergency Logging</h2>
-            <button id="log-emergency">Log Emergency</button>
-            <ul id="emergency-history"></ul>
-        </section>
-
-        <!-- Proposals -->
-        <section id="proposals">
-            <h2>Collaboration and Proposals</h2>
-            <textarea id="proposal-input" placeholder="Submit your idea..."></textarea>
-            <button id="submit-proposal">Submit Proposal</button>
-            <ul id="proposals-list"></ul>
-        </section>
-
-        <!-- Meetings -->
-        <section id="meetings">
-            <h2>Meetings</h2>
-            <ul id="meetings-list"></ul>
-        </section>
-
-        <!-- Services -->
-        <section id="services">
-            <h2>Services</h2>
-            <ul id="services-list"></ul>
-        </section>
-
-        <!-- Profile -->
-        <section id="profile">
-            <h2>User Profile</h2>
-            <div id="profile-details"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Vila do Coco</p>
+        <p>&copy; 2025 Gestão Comunitária</p>
     </footer>
 </body>
 </html>
