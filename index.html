@@ -14,6 +14,8 @@
         .theme-light {
             --bg-color: #f9fafb;
             --text-color: #374151;
+            --menu-bg-color: #e5e7eb;
+            --menu-text-color: #374151;
             --primary-color: #4b5563;
             --secondary-color: #6b7280;
             --accent-color: #10b981;
@@ -22,7 +24,9 @@
         .theme-dark {
             --bg-color: #1f2937;
             --text-color: #f3f4f6;
-            --primary-color: #374151;
+            --menu-bg-color: #374151;
+            --menu-text-color: #f3f4f6;
+            --primary-color: #4b5563;
             --secondary-color: #9ca3af;
             --accent-color: #34d399;
         }
@@ -54,8 +58,8 @@
         }
 
         #app-drawer {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
+            background-color: var(--menu-bg-color);
+            color: var(--menu-text-color);
         }
     </style>
 </head>
@@ -98,16 +102,16 @@
             <div class="card">
                 <p class="mb-4 text-center mb-10 hidden md:block">Fique atualizado com os últimos avisos e alertas, confira o clima e navegue facilmente pelo aplicativo.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="card">
-                        <h3 class="font-bold">Avisos</h3>
+                    <div class="card bg-blue-100 dark:bg-blue-700">
+                        <h3 class="font-bold text-blue-800 dark:text-blue-200">Avisos</h3>
                         <p>Confira os últimos avisos da Vila aqui.</p>
                     </div>
-                    <div class="card">
-                        <h3 class="font-bold">Alertas</h3>
+                    <div class="card bg-yellow-100 dark:bg-yellow-700">
+                        <h3 class="font-bold text-yellow-800 dark:text-yellow-200">Alertas</h3>
                         <p>Fique informado sobre os alertas da comunidade.</p>
                     </div>
-                    <div class="card">
-                        <h3 class="font-bold">Clima</h3>
+                    <div class="card bg-green-100 dark:bg-green-700">
+                        <h3 class="font-bold text-green-800 dark:text-green-200">Clima</h3>
                         <p>Clima de hoje: Ensolarado, 25°C.</p>
                     </div>
                 </div>
