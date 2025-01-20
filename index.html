@@ -5,112 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestão da Vila</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: false,
-        };
-    </script>
+    <link rel="stylesheet" href="header.css">
     <style>
-        .theme-light {
-            --bg-color: #e5e7eb;
-            --text-color: #374151;
-            --menu-bg-color: #f9fafb;
-            --menu-text-color: #374151;
-            --primary-color: #4b5563;
-            --secondary-color: #6b7280;
-            --accent-color: #10b981;
-            --icon-bg-color: #c2ddf3;
-            --icon-color: #f59e0b;
-            --grass-color: #51ed45;
-            --pastel-blue: #dbeafe;
-            --pastel-blue-text: #1e3a8a;
-            --pastel-yellow: #fef9c3;
-            --pastel-yellow-text: #7c2d12;
-            --pastel-green: #d1fae5;
-            --pastel-green-text: #064e3b;
-        }
-
-        .theme-dark {
-            --bg-color: #1f2937;
-            --text-color: #f3f4f6;
-            --menu-bg-color: #374151;
-            --menu-text-color: #f3f4f6;
-            --primary-color: #4b5563;
-            --secondary-color: #9ca3af;
-            --accent-color: #34d399;
-            --icon-bg-color: #1a3d67;
-            --icon-color: #f3f4f6;
-            --grass-color: #07503b;
-            --pastel-blue: #1e40af;
-            --pastel-blue-text: #dbeafe;
-            --pastel-yellow: #854d0e;
-            --pastel-yellow-text: #fef9c3;
-            --pastel-green: #065f46;
-            --pastel-green-text: #d1fae5;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: 50%;
-            text-align: center;
-            transition: background-color 1s;
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-        }
-
         .card {
             background-color: var(--bg-color);
             border: 1px solid var(--secondary-color);
             padding: 1rem;
             border-radius: 0.375rem;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        #app-drawer {
-            background-color: var(--menu-bg-color);
-            color: var(--menu-text-color);
-        }
-
-        .menu-btn {
-            position: relative;
-            background-color: var(--icon-bg-color);
-            color: var(--icon-color);
-            transition: background-color 0.3s, color 0.3s;
-            border-radius: 0; /* Square shape for menu button */
-            width: 40px;
-            height: 40px;
-        }
-
-        .menu-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 33%;
-            background-color: var(--grass-color);
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
-        
-        .theme-btn {
-            background-color: var(--icon-bg-color);
-            color: var(--icon-color);
-            transition: background-color 0.3s, color 0.3s;
         }
 
         .pastel-box {
@@ -133,52 +35,29 @@
             background-color: var(--pastel-green);
             color: var(--pastel-green-text);
         }
-
-        /* Animation for Sun and Moon */
-        .theme-icon {
-            display: inline-block;
-            transition: transform 1s, color 1s;
-        }
-
-        .theme-icon.sun {
-            transform: rotate(0deg);
-            color: #fcd34d; /* Yellow for Sun */
-        }
-
-        .theme-icon.moon {
-            transform: rotate(180deg);
-            color: #93c5fd; /* Blue for Moon */
-        }
     </style>
 </head>
 <body class="theme-light flex flex-col min-h-screen font-sans">
-    <!-- Theme Toggle -->
-    <button id="theme-toggle" class="absolute top-4 right-4 btn theme-btn">
-        <span id="theme-icon" class="theme-icon sun">☀️</span>
-    </button>
+    <!-- Header Buttons -->
+    <div id="header-buttons"></div>
 
     <!-- App Drawer -->
-    <div class="relative">
-        <button id="menu-toggle" class="absolute top-4 left-4 menu-btn">
-            <span class="material-icons">🏡</span>
-        </button>
-        <nav id="app-drawer" class="fixed top-0 left-0 w-64 h-full transform -translate-x-full transition-transform duration-300 z-50">
-            <div class="p-4 border-b border-gray-500 flex justify-between items-center">
-                <h2 class="text-lg font-bold">Menu</h2>
-                <button id="close-menu" class="btn">X</button>
-            </div>
-            <ul class="p-4 space-y-2">
-                <li><a href="index.html" class="block px-4 py-2 rounded">Início</a></li>
-                <li><a href="dashboard.html" class="block px-4 py-2 rounded">Painel Financeiro</a></li>
-                <li><a href="discussions.html" class="block px-4 py-2 rounded">Discussões</a></li>
-                <li><a href="voting.html" class="block px-4 py-2 rounded">Votações</a></li>
-                <li><a href="emergencies.html" class="block px-4 py-2 rounded">Emergências</a></li>
-                <li><a href="proposals.html" class="block px-4 py-2 rounded">Propostas</a></li>
-                <li><a href="meetings.html" class="block px-4 py-2 rounded">Reuniões</a></li>
-                <li><a href="services.html" class="block px-4 py-2 rounded">Serviços</a></li>
-                <li><a href="profile.html" class="block px-4 py-2 rounded">Perfil</a></li>
-            </ul>
-        </nav>
+    <div id="app-drawer" class="fixed top-0 left-0 w-64 h-full transform -translate-x-full transition-transform duration-300 z-50">
+        <div class="p-4 border-b border-gray-500 flex justify-between items-center">
+            <h2 class="text-lg font-bold">Menu</h2>
+            <button id="close-menu" class="btn">X</button>
+        </div>
+        <ul class="p-4 space-y-2">
+            <li><a href="index.html" class="block px-4 py-2 rounded">Início</a></li>
+            <li><a href="dashboard.html" class="block px-4 py-2 rounded">Painel Financeiro</a></li>
+            <li><a href="discussions.html" class="block px-4 py-2 rounded">Discussões</a></li>
+            <li><a href="voting.html" class="block px-4 py-2 rounded">Votações</a></li>
+            <li><a href="emergencies.html" class="block px-4 py-2 rounded">Emergências</a></li>
+            <li><a href="proposals.html" class="block px-4 py-2 rounded">Propostas</a></li>
+            <li><a href="meetings.html" class="block px-4 py-2 rounded">Reuniões</a></li>
+            <li><a href="services.html" class="block px-4 py-2 rounded">Serviços</a></li>
+            <li><a href="profile.html" class="block px-4 py-2 rounded">Perfil</a></li>
+        </ul>
     </div>
 
     <!-- Main Content -->
@@ -209,43 +88,6 @@
         <p>&copy; 2025 Sistema de Gestão da Vila do Coco</p>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const closeMenu = document.getElementById('close-menu');
-        const appDrawer = document.getElementById('app-drawer');
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        const toggleDrawer = () => {
-            appDrawer.classList.toggle('-translate-x-full');
-        };
-
-        menuToggle.addEventListener('click', toggleDrawer);
-        closeMenu.addEventListener('click', toggleDrawer);
-
-        // Close menu when clicking outside
-        window.addEventListener('click', (event) => {
-            if (!appDrawer.contains(event.target) && !menuToggle.contains(event.target) && !appDrawer.classList.contains('-translate-x-full')) {
-                toggleDrawer();
-            }
-        });
-
-        // Theme toggle with animation
-        themeToggle.addEventListener('click', () => {
-            const isDark = body.classList.contains('theme-dark');
-            body.classList.toggle('theme-light', isDark);
-            body.classList.toggle('theme-dark', !isDark);
-
-            // Update icon and menu button colors
-            themeIcon.classList.toggle('sun', !isDark);
-            themeIcon.classList.toggle('moon', isDark);
-            themeIcon.textContent = isDark ? '☀️' : '🌙';
-            document.querySelectorAll('.menu-btn').forEach(btn => {
-                btn.style.backgroundColor = isDark ? 'var(--icon-bg-color)' : 'var(--icon-bg-color)';
-                btn.style.color = isDark ? 'var(--icon-color)' : 'var(--icon-color)';
-            });
-        });
-    </script>
+    <script src="header-component.js"></script>
 </body>
 </html>
