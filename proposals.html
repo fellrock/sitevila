@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergências</title>
+    <title>Propostas</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 font-sans">
-    <header class="bg-red-500 text-white py-4">
+    <header class="bg-purple-500 text-white py-4">
         <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Emergências</h1>
+            <h1 class="text-xl font-bold">Propostas</h1>
             <nav>
-                <button class="text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded" onclick="window.location.href='index.html'">Voltar</button>
+                <button class="text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded" onclick="window.location.href='index.html'">Voltar</button>
             </nav>
         </div>
     </header>
 
     <main class="flex-1 w-full max-w-5xl mx-auto p-6">
         <section class="mb-6">
-            <h2 class="text-2xl font-bold mb-4">Registro de Emergências</h2>
+            <h2 class="text-2xl font-bold mb-4">Painel de Propostas</h2>
             <div class="bg-white p-6 rounded-lg shadow">
                 <div class="mb-4">
-                    <textarea id="new-emergency" class="w-full border border-gray-300 rounded-lg p-4 mb-4" placeholder="Descreva a emergência..."></textarea>
-                    <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Registrar Emergência</button>
+                    <textarea id="new-proposal" class="w-full border border-gray-300 rounded-lg p-4 mb-4" placeholder="Descreva sua proposta..."></textarea>
+                    <button class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Submeter Proposta</button>
                 </div>
-                <h3 class="text-xl font-semibold mb-4">Histórico de Emergências</h3>
-                <ul id="emergency-list" class="space-y-4">
+                <h3 class="text-xl font-semibold mb-4">Propostas em Discussão</h3>
+                <ul id="proposal-list" class="space-y-4">
                     <li class="bg-gray-100 p-4 rounded-lg shadow">
-                        <h4 class="text-lg font-bold">Emergência 1</h4>
-                        <p class="text-gray-700">Descrição de exemplo para uma emergência registrada.</p>
-                        <p class="text-sm text-gray-500 mt-2">Data: 15/01/2025</p>
+                        <h4 class="text-lg font-bold">Proposta 1</h4>
+                        <p class="text-gray-700">Descrição de exemplo para uma proposta submetida.</p>
+                        <div class="mt-4 flex space-x-4 items-center">
+                            <button class="text-purple-500 hover:text-purple-600">Curtir</button>
+                            <button class="text-purple-500 hover:text-purple-600" onclick="window.location.href='proposal_detail.html'">Ver Detalhes</button>
+                        </div>
                     </li>
                     <li class="bg-gray-100 p-4 rounded-lg shadow">
-                        <h4 class="text-lg font-bold">Emergência 2</h4>
-                        <p class="text-gray-700">Outra descrição de exemplo para uma emergência registrada.</p>
-                        <p class="text-sm text-gray-500 mt-2">Data: 12/01/2025</p>
+                        <h4 class="text-lg font-bold">Proposta 2</h4>
+                        <p class="text-gray-700">Outra descrição de exemplo para uma proposta submetida.</p>
+                        <div class="mt-4 flex space-x-4 items-center">
+                            <button class="text-purple-500 hover:text-purple-600">Curtir</button>
+                            <button class="text-purple-500 hover:text-purple-600" onclick="window.location.href='proposal_detail.html'">Ver Detalhes</button>
+                        </div>
                     </li>
                 </ul>
             </div>
