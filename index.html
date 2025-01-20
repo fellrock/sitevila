@@ -12,13 +12,16 @@
     </script>
     <style>
         .theme-light {
-            --bg-color: #f9fafb;
+            --bg-color: #e5e7eb;
             --text-color: #374151;
-            --menu-bg-color: #e5e7eb;
+            --menu-bg-color: #f9fafb;
             --menu-text-color: #374151;
             --primary-color: #4b5563;
             --secondary-color: #6b7280;
             --accent-color: #10b981;
+            --pastel-blue: #dbeafe;
+            --pastel-yellow: #fef9c3;
+            --pastel-green: #d1fae5;
         }
 
         .theme-dark {
@@ -29,6 +32,9 @@
             --primary-color: #4b5563;
             --secondary-color: #9ca3af;
             --accent-color: #34d399;
+            --pastel-blue: #1e40af;
+            --pastel-yellow: #854d0e;
+            --pastel-green: #065f46;
         }
 
         body {
@@ -60,6 +66,27 @@
         #app-drawer {
             background-color: var(--menu-bg-color);
             color: var(--menu-text-color);
+        }
+
+        .pastel-box {
+            border-radius: 0.375rem;
+            padding: 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .pastel-blue {
+            background-color: var(--pastel-blue);
+            color: #1e3a8a;
+        }
+
+        .pastel-yellow {
+            background-color: var(--pastel-yellow);
+            color: #854d0e;
+        }
+
+        .pastel-green {
+            background-color: var(--pastel-green);
+            color: #065f46;
         }
     </style>
 </head>
@@ -102,16 +129,16 @@
             <div class="card">
                 <p class="mb-4 text-center mb-10 hidden md:block">Fique atualizado com os últimos avisos e alertas, confira o clima e navegue facilmente pelo aplicativo.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="card bg-blue-100 dark:bg-blue-700">
-                        <h3 class="font-bold text-blue-800 dark:text-blue-200">Avisos</h3>
+                    <div class="pastel-box pastel-blue">
+                        <h3 class="font-bold">Avisos</h3>
                         <p>Confira os últimos avisos da Vila aqui.</p>
                     </div>
-                    <div class="card bg-yellow-100 dark:bg-yellow-700">
-                        <h3 class="font-bold text-yellow-800 dark:text-yellow-200">Alertas</h3>
+                    <div class="pastel-box pastel-yellow">
+                        <h3 class="font-bold">Alertas</h3>
                         <p>Fique informado sobre os alertas da comunidade.</p>
                     </div>
-                    <div class="card bg-green-100 dark:bg-green-700">
-                        <h3 class="font-bold text-green-800 dark:text-green-200">Clima</h3>
+                    <div class="pastel-box pastel-green">
+                        <h3 class="font-bold">Clima</h3>
                         <p>Clima de hoje: Ensolarado, 25°C.</p>
                     </div>
                 </div>
