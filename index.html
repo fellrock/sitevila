@@ -19,6 +19,9 @@
             --primary-color: #4b5563;
             --secondary-color: #6b7280;
             --accent-color: #10b981;
+            --icon-bg-color: #c2ddf3;
+            --icon-color: #f59e0b;
+            --grass-color: #51ed45;
             --pastel-blue: #dbeafe;
             --pastel-blue-text: #1e3a8a;
             --pastel-yellow: #fef9c3;
@@ -35,6 +38,9 @@
             --primary-color: #4b5563;
             --secondary-color: #9ca3af;
             --accent-color: #34d399;
+            --icon-bg-color: #1a3d67;
+            --icon-color: #f3f4f6;
+            --grass-color: #07503b;
             --pastel-blue: #1e40af;
             --pastel-blue-text: #dbeafe;
             --pastel-yellow: #854d0e;
@@ -52,7 +58,7 @@
             padding: 0.5rem 1rem;
             border-radius: 50%;
             text-align: center;
-            transition: background-color 0.3s;
+            transition: background-color 1s;
             background-color: var(--primary-color);
             color: white;
             width: 50px;
@@ -77,6 +83,34 @@
         #app-drawer {
             background-color: var(--menu-bg-color);
             color: var(--menu-text-color);
+        }
+
+        .menu-btn {
+            position: relative;
+            background-color: var(--icon-bg-color);
+            color: var(--icon-color);
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0; /* Square shape for menu button */
+            width: 40px;
+            height: 40px;
+        }
+
+        .menu-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 33%;
+            background-color: var(--grass-color);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .theme-btn {
+            background-color: var(--icon-bg-color);
+            color: var(--icon-color);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .pastel-box {
@@ -119,13 +153,13 @@
 </head>
 <body class="theme-light flex flex-col min-h-screen font-sans">
     <!-- Theme Toggle -->
-    <button id="theme-toggle" class="absolute top-4 right-4 btn">
+    <button id="theme-toggle" class="absolute top-4 right-4 btn theme-btn">
         <span id="theme-icon" class="theme-icon sun">☀️</span>
     </button>
 
     <!-- App Drawer -->
     <div class="relative">
-        <button id="menu-toggle" class="absolute top-4 left-4 btn">
+        <button id="menu-toggle" class="absolute top-4 left-4 menu-btn">
             <span class="material-icons">🏡</span>
         </button>
         <nav id="app-drawer" class="fixed top-0 left-0 w-64 h-full transform -translate-x-full transition-transform duration-300 z-50">
@@ -203,10 +237,14 @@
             body.classList.toggle('theme-light', isDark);
             body.classList.toggle('theme-dark', !isDark);
 
-            // Update icon with animation
+            // Update icon and menu button colors
             themeIcon.classList.toggle('sun', !isDark);
             themeIcon.classList.toggle('moon', isDark);
             themeIcon.textContent = isDark ? '☀️' : '🌙';
+            document.querySelectorAll('.menu-btn').forEach(btn => {
+                btn.style.backgroundColor = isDark ? 'var(--icon-bg-color)' : 'var(--icon-bg-color)';
+                btn.style.color = isDark ? 'var(--icon-color)' : 'var(--icon-color)';
+            });
         });
     </script>
 </body>
