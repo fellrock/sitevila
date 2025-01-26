@@ -5,32 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Financeiro</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="header.css">
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 font-sans">
-    <header class="bg-blue-500 text-white py-4">
-        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Painel Financeiro</h1>
-            <nav>
-                <button class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded" onclick="window.location.href='index.html'">Voltar</button>
-            </nav>
-        </div>
-    </header>
+    <!-- Header Buttons -->
+    <div id="header-buttons"></div>
 
-    <main class="flex-1 w-full max-w-5xl mx-auto p-6">
+    <!-- App Drawer -->
+    <div id="app-drawer" class="fixed top-0 left-0 w-64 h-full transform -translate-x-full transition-transform duration-300 z-50">
+        <div class="p-4 border-b border-gray-500 flex justify-between items-center">
+            <h2 class="text-lg font-bold">Menu</h2>
+            <button id="close-menu" class="btn">X</button>
+        </div>
+        <ul class="p-4 space-y-2">
+            <li><a href="index.html" class="block px-4 py-2 rounded">Início</a></li>
+            <li><a href="dashboard.html" class="block px-4 py-2 rounded">Painel Financeiro</a></li>
+            <li><a href="discussions.html" class="block px-4 py-2 rounded">Discussões</a></li>
+            <li><a href="voting.html" class="block px-4 py-2 rounded">Votações</a></li>
+            <li><a href="emergencies.html" class="block px-4 py-2 rounded">Emergências</a></li>
+            <li><a href="proposals.html" class="block px-4 py-2 rounded">Propostas</a></li>
+            <li><a href="meetings.html" class="block px-4 py-2 rounded">Reuniões</a></li>
+            <li><a href="services.html" class="block px-4 py-2 rounded">Serviços</a></li>
+            <li><a href="profile.html" class="block px-4 py-2 rounded">Perfil</a></li>
+        </ul>
+    </div>
+
+    <main class="theme-light flex-1 w-full max-w-5xl mx-auto p-6" style="margin-top: 1rem; padding-left: 15%; padding-right: 15%;">
         <section class="mb-6">
             <h2 class="text-2xl font-bold mb-4">Resumo Financeiro</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-semibold mb-2">Saldo Atual</h3>
-                    <p class="text-2xl font-bold text-green-500">R$ 10.000,00</p>
+                    <!-- Atualizar este elemento dinamicamente -->
+                    <p id="saldo-atual" class="text-2xl font-bold text-green-500">R$ 0,00</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-semibold mb-2">Total de Depósitos</h3>
-                    <p class="text-2xl font-bold text-blue-500">R$ 50.000,00</p>
+                    <!-- Atualizar este elemento dinamicamente -->
+                    <p id="total-depositos" class="text-2xl font-bold text-blue-500">R$ 0,00</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-semibold mb-2">Total de Despesas</h3>
-                    <p class="text-2xl font-bold text-red-500">R$ 40.000,00</p>
+                    <!-- Atualizar este elemento dinamicamente -->
+                    <p id="total-despesas" class="text-2xl font-bold text-red-500">R$ 0,00</p>
                 </div>
             </div>
         </section>
@@ -38,12 +55,8 @@
         <section class="mb-6">
             <h2 class="text-2xl font-bold mb-4">Moradores Contribuintes (Ano Anterior)</h2>
             <div class="bg-white p-6 rounded-lg shadow">
-                <ul class="list-disc pl-6">
-                    <li>Residência 01</li>
-                    <li>Residência 02</li>
-                    <li>Residência 03</li>
-                    <li>Residência 04</li>
-                    <li>Residência 05</li>
+                <ul id="moradores-contribuintes" class="list-disc pl-6">
+                    <!-- Moradores serão inseridos dinamicamente aqui -->
                 </ul>
             </div>
         </section>
@@ -53,17 +66,14 @@
             <div class="bg-white p-6 rounded-lg shadow">
                 <div class="mb-4">
                     <h3 class="text-lg font-semibold">Receitas</h3>
-                    <ul class="list-disc pl-6">
-                        <li>Contribuições: R$ 8.000,00</li>
-                        <li>Outras Receitas: R$ 2.000,00</li>
+                    <ul id="receitas" class="list-disc pl-6">
+                        <!-- Receitas serão inseridas dinamicamente -->
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold">Despesas</h3>
-                    <ul class="list-disc pl-6">
-                        <li>Manutenção: R$ 3.000,00</li>
-                        <li>Serviços: R$ 2.000,00</li>
-                        <li>Outras Despesas: R$ 1.000,00</li>
+                    <ul id="despesas" class="list-disc pl-6">
+                        <!-- Despesas serão inseridas dinamicamente -->
                     </ul>
                 </div>
             </div>
@@ -72,7 +82,7 @@
         <section>
             <h2 class="text-2xl font-bold mb-4">Projeção de Gastos</h2>
             <div class="bg-white p-6 rounded-lg shadow">
-                <p>Os gastos previstos para o próximo mês somam: <span class="text-blue-500 font-bold">R$ 12.000,00</span></p>
+                <p id="projecao-gastos">Os gastos previstos para o próximo mês somam: <span class="text-blue-500 font-bold">R$ 0,00</span></p>
             </div>
         </section>
     </main>
@@ -80,5 +90,48 @@
     <footer class="text-center py-4 bg-gray-200 border-t border-gray-300">
         <p>&copy; 2025 Sistema de Gestão da Vila do Coco</p>
     </footer>
+
+    <script src="header-component.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // URL da API
+            const apiUrl = "http://localhost:8080/api/financial/transactions";
+    
+            // Elementos onde os dados serão inseridos
+            const saldoAtualEl = document.querySelector(".text-green-500");
+            const totalDepositosEl = document.querySelector(".text-blue-500");
+            const totalDespesasEl = document.querySelector(".text-red-500");
+    
+            // Fetch para buscar os dados da API
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Inicializar totais
+                    let totalDepositos = 0;
+                    let totalDespesas = 0;
+    
+                    // Processar cada transação
+                    data.forEach(transaction => {
+                        if (transaction.type === "deposit") {
+                            totalDepositos += transaction.amount;
+                        } else if (transaction.type === "expense") {
+                            totalDespesas += transaction.amount;
+                        }
+                    });
+    
+                    // Calcular saldo atual
+                    const saldoAtual = totalDepositos - totalDespesas;
+    
+                    // Atualizar o DOM com os valores
+                    saldoAtualEl.textContent = `R$ ${saldoAtual.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+                    totalDepositosEl.textContent = `R$ ${totalDepositos.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+                    totalDespesasEl.textContent = `R$ ${totalDespesas.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar dados da API:", error);
+                });
+        });
+    </script>
+    
 </body>
 </html>

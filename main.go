@@ -5,10 +5,14 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
-	"io/ioutil"
+
 	"net/http"
 	"os"
 	"os/exec"
+
+	"io"
+	"sitevila/db"        // Pacote para banco de dados
+	"sitevila/financial" // Pacote para rotas financeiras
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -31,12 +35,20 @@ func main() {
 		return
 	}
 
+	// Inicializar o banco de dados
+	db.InitDatabase()
+	defer db.Database.Close()
+
+	// Popular o banco de dados com dados iniciais
+	db.SeedDatabase()
+
 	r := gin.Default()
 
+	// Webhook para deploy automático
 	r.POST("/webhook", func(c *gin.Context) {
 		// Verifique a assinatura do webhook
 		signature := c.GetHeader("X-Hub-Signature-256")
-		body, _ := ioutil.ReadAll(c.Request.Body)
+		body, _ := io.ReadAll(c.Request.Body)
 
 		if !verifySignature(signature, body, secret) {
 			c.JSON(http.StatusForbidden, gin.H{"error": "Assinatura inválida"})
@@ -49,8 +61,8 @@ func main() {
 
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
-				"error":   err.Error(),
-				"output":  string(output),
+				"error":  err.Error(),
+				"output": string(output),
 			})
 			return
 		}
@@ -61,6 +73,10 @@ func main() {
 		})
 	})
 
+	// Rotas do sistema financeiro
+	financial.RegisterRoutes(r)
+
+	// Inicie o servidor na porta 8080
 	r.Run(":8080")
 }
 
